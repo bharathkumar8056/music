@@ -38,14 +38,14 @@ const MobileNav = () => {
 			left={0}
 			zIndex={30}
 			w="full"
-			h={navIsOpen ? "100vh" : undefined}
-			bg="zinc.950">
-			<Flex align="center" justify="space-between" p={2}>
+			h={navIsOpen ? "100vh" : "auto"}
+			bg="zinc.950"
+		>
+			<Flex align="center" justify="space-between" p={4}>
 				<Link to="/home">
 					<Flex color="accent.main" align="center" gap={4}>
-						<BiMusic color="inherit" size={30} />
-
-						<Heading as="h1" fontWeight="semibold" fontSize="2xl">
+						<BiMusic size={30} />
+						<Heading as="h1" fontSize="lg" fontWeight="semibold">
 							BeatBox
 						</Heading>
 					</Flex>
@@ -55,7 +55,7 @@ const MobileNav = () => {
 				</Button>
 			</Flex>
 			{navIsOpen && (
-				<Box px={4} pb={2} h="full">
+				<Box py={4} px={6}>
 					<NavContent />
 				</Box>
 			)}
@@ -70,12 +70,17 @@ const DesktopNav = () => {
 			top={0}
 			left={0}
 			zIndex={30}
-			minW={{ base: "full", md: "12rem", lg: "16rem", "2xl": "25rem" }}
-			minH={{ base: "5rem", md: "100vh" }}
+			w={{ base: "full", md: "12rem", lg: "14rem", xl: "18rem" }}
+			h="100vh"
 			borderRight="1px"
 			borderRightColor="zinc.600"
-			bg="zinc.900">
-			<Flex direction="column" minH="100vh" p={4}>
+			bg="zinc.900"
+			display="flex"
+			flexDirection="column"
+			justifyContent="space-between"
+			p={4}
+		>
+			<Flex direction="column" gap={6}>
 				<Flex color="accent.main" align="center" gap={4}>
 					<BiMusic color="inherit" size={30} />
 					<Heading as="h1" fontWeight="semibold" fontSize="2xl">
@@ -103,6 +108,7 @@ const NavContent = () => {
 		dispatch(resetPlayer());
 		navigate("/auth/login");
 	};
+
 	return (
 		<Box>
 			<Flex direction="column" gap={2} mt={12}>
@@ -120,7 +126,8 @@ const NavContent = () => {
 							gap={6}
 							py={6}
 							px={4}
-							w="full">
+							w="full"
+						>
 							<AiFillHome size={20} />
 							<span>Home</span>
 						</Button>
@@ -140,7 +147,8 @@ const NavContent = () => {
 							gap={6}
 							w="full"
 							py={6}
-							px={4}>
+							px={4}
+							>
 							<HiViewGrid size={20} />
 							<span>Browse</span>
 						</Button>
@@ -160,7 +168,8 @@ const NavContent = () => {
 							gap={6}
 							w="full"
 							py={6}
-							px={4}>
+							px={4}
+						>
 							<BsHeadphones size={20} />
 							<span>Playlists</span>
 						</Button>
@@ -180,7 +189,8 @@ const NavContent = () => {
 							gap={6}
 							w="full"
 							py={6}
-							px={4}>
+							px={4}
+						>
 							<AiFillHeart size={20} />
 							<span>Favorites</span>
 						</Button>
@@ -210,8 +220,8 @@ const NavContent = () => {
 							display="inline-flex"
 							alignItems="center"
 							fontWeight={400}
-							gap={3}>
-							{" "}
+							gap={3}
+						>
 							<AiOutlineLogout size={20} /> Logout
 						</Button>
 					</Box>
@@ -225,7 +235,8 @@ const NavContent = () => {
 						borderColor="zinc.600"
 						fontSize="sm"
 						py={2}
-						px={5}>
+						px={5}
+					>
 						Login
 					</Button>
 				)}
